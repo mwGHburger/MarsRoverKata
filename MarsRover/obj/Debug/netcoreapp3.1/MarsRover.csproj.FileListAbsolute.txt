@@ -1,0 +1,12 @@
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/bin/Debug/netcoreapp3.1/MarsRover.deps.json
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/bin/Debug/netcoreapp3.1/MarsRover.runtimeconfig.json
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/bin/Debug/netcoreapp3.1/MarsRover.runtimeconfig.dev.json
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/bin/Debug/netcoreapp3.1/MarsRover.dll
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/bin/Debug/netcoreapp3.1/MarsRover.pdb
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.csprojAssemblyReference.cache
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.AssemblyInfoInputs.cache
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.AssemblyInfo.cs
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.csproj.CoreCompileInputs.cache
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.dll
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.pdb
+/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/MarsRoverKata/MarsRover/obj/Debug/netcoreapp3.1/MarsRover.genruntimeconfig.cache
