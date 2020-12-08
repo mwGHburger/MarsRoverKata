@@ -2,13 +2,13 @@ namespace MarsRover
 {
     public class Square
     {
-        private int _row;
-        private int _column;
+        public int Row { get; }
+        public int Column { get; }
 
         public Square(int row, int column)
         {
-            _row = row;
-            _column = column;
+            Row = row;
+            Column = column;
         }
     }
 }

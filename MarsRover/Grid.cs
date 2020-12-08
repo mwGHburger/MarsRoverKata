@@ -4,23 +4,28 @@ namespace MarsRover
 {
     public class Grid
     {
-        private int _rows;
-        private int _columns;
+        public int Rows { get; }
+        public int Columns { get; }
 
         public List<Square> Squares { get; } = new List<Square>();
 
         public Grid(int rows, int columns)
         {
-            _rows = rows;
-            _columns = columns;
+            Rows = rows;
+            Columns = columns;
             CreateSquares();
+        }
+
+        public Square Find(int row, int column)
+        {
+            return Squares.Find(x => x.Row.Equals(row) && x.Column.Equals(column));
         }
 
         private void CreateSquares()
         {
-            for(int row = 1; row <= _rows; row++)
+            for(int row = 1; row <= Rows; row++)
             {   
-                for(int column = 1; column <= _columns; column++)
+                for(int column = 1; column <= Columns; column++)
                 {
                     Squares.Add(new Square(row, column));
                 }

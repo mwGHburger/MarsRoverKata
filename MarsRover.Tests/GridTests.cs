@@ -14,5 +14,16 @@ namespace MarsRover.Tests
 
             Assert.Equal(20, actual);
         }
+
+        [Fact]
+        public void Find_ShouldReturnSquareGivenRowAndColumn()
+        {
+            var grid = new Grid(5,5);
+
+            var actual = grid.Find(2,3);
+
+            Assert.Equal(2, actual.Row);
+            Assert.Equal(3, actual.Column);
+        }
     }
 }
