@@ -18,9 +18,9 @@ namespace MarsRover.Tests
             var north = new DirectionNode(DirectionName.North);
             var east = new DirectionNode(DirectionName.East);
 
-            north.NextClockwiseDirection = east;
+            north.TurnRight = east;
 
-            Assert.Equal(east, north.NextClockwiseDirection);
+            Assert.Equal(east, north.TurnRight);
         }
 
         [Fact]
@@ -29,9 +29,9 @@ namespace MarsRover.Tests
             var north = new DirectionNode(DirectionName.North);
             var west = new DirectionNode(DirectionName.West);
 
-            north.NextAntiClockwiseDirection = west;
+            north.TurnLeft = west;
 
-            Assert.Equal(west, north.NextAntiClockwiseDirection);
+            Assert.Equal(west, north.TurnLeft);
         }
     }
 }

@@ -11,11 +11,12 @@ namespace MarsRover.Tests
         public void CurrentPositionProperty_ShouldBeTypeSquare()
         {
             var grid = new Grid(5,5);
-            var directions = new Directions();
+            var directionTypes = TestHelper.SetupDirectionTypes();
+            var directions = new Directions(directionTypes);
             var rover = new Rover(grid, directions);
 
 
-            var actual = rover.CurrentPosition;
+            var actual = rover.CurrentSquare;
 
             Assert.IsType<Square>(actual);
         }
@@ -24,24 +25,25 @@ namespace MarsRover.Tests
         public void CurrentDirectionProperty_ShouldBeTypeDirection()
         {
             var grid = new Grid(5,5);
-            var directions = new Directions();
+            var directionTypes = TestHelper.SetupDirectionTypes();
+            var directions = new Directions(directionTypes);
             var rover = new Rover(grid, directions);
 
             var actual = rover.CurrentDirection;
 
-            Assert.IsType<DirectionNode>(actual);
+            Assert.IsAssignableFrom<IDirection>(actual);
         }
 
         [Fact]
         public void Turn_ShouldChangeTheRoversCurrentDirectionToTheNextClockwiseDirection_Given_Char_r()
         {
             var grid = new Grid(5,5);
-            var directions = new Directions();
+            var directionTypes = TestHelper.SetupDirectionTypes();
+            var directions = new Directions(directionTypes);
             
             var rover = new Rover(grid, directions);
 
             rover.Turn('r');
-
             Assert.Equal(DirectionName.East, rover.CurrentDirection.Name);            
         }
 
@@ -49,7 +51,8 @@ namespace MarsRover.Tests
         public void Turn_ShouldChangeTheRoversCurrentDirectionToTheNextAntiClockwiseDirection_Given_Char_l()
         {
             var grid = new Grid(5,5);
-            var directions = new Directions();
+            var directionTypes = TestHelper.SetupDirectionTypes();
+            var directions = new Directions(directionTypes);
             
             var rover = new Rover(grid, directions);
             rover.Turn('l');
@@ -57,27 +60,82 @@ namespace MarsRover.Tests
         }
 
         [Theory]
-        [InlineData('f', DirectionName.North, 2, 1)]
-        [InlineData('f', DirectionName.East, 1, 2)]
-        [InlineData('f', DirectionName.South, 5, 1)]
-        [InlineData('f', DirectionName.West, 1, 5)]
-        [InlineData('b', DirectionName.North, 5, 1)]
-        [InlineData('b', DirectionName.East, 1, 5)]
-        [InlineData('b', DirectionName.South, 2, 1)]
-        [InlineData('b', DirectionName.West, 1, 2)]
-        public void Move_ShouldChangeTheRoversCurrentPostion(char command, DirectionName directionName, int newRowPosition, int newColumnPosition)
+        [InlineData('f', 2, 1)]
+        // [InlineData('f', DirectionName.West, 1, 5)]
+        [InlineData('b', 5, 1)]
+        // [InlineData('b', DirectionName.West, 1, 2)]
+        public void Move_ShouldChangeTheRoversCurrentPostion_GivenNorth(char command, int newRowPosition, int newColumnPosition)
         {
             var grid = new Grid(5,5);
             var mockDirections = new Mock<IDirections>();
 
-            mockDirections.SetupGet(x => x.Head).Returns(new DirectionNode(directionName));
+            mockDirections.SetupGet(x => x.Head).Returns(new North());
+
+            var rover = new Rover(grid, mockDirections.Object);
+            var expected = grid.Find(newRowPosition, newColumnPosition);
+
+            
+            rover.Move(command);
+            
+            Assert.Equal(expected, rover.CurrentSquare);
+        }
+
+        [Theory]
+        [InlineData('f', 1, 2)]
+        [InlineData('b', 1, 5)]
+        public void Move_ShouldChangeTheRoversCurrentPostion_GivenEast(char command, int newRowPosition, int newColumnPosition)
+        {
+            var grid = new Grid(5,5);
+            var mockDirections = new Mock<IDirections>();
+
+            mockDirections.SetupGet(x => x.Head).Returns(new East());
+
+            var rover = new Rover(grid, mockDirections.Object);
+            var expected = grid.Find(newRowPosition, newColumnPosition);
+
+            
+            rover.Move(command);
+            
+            Assert.Equal(expected, rover.CurrentSquare);
+        }
+
+        [Theory]
+        [InlineData('f', 5, 1)]
+        [InlineData('b', 2, 1)]
+        public void Move_ShouldChangeTheRoversCurrentPostion_GivenSouth(char command, int newRowPosition, int newColumnPosition)
+        {
+            var grid = new Grid(5,5);
+            var mockDirections = new Mock<IDirections>();
+
+            mockDirections.SetupGet(x => x.Head).Returns(new South());
+
+            var rover = new Rover(grid, mockDirections.Object);
+            var expected = grid.Find(newRowPosition, newColumnPosition);
+
+            
+            rover.Move(command);
+            
+            Assert.Equal(expected, rover.CurrentSquare);
+        }
+
+        [Theory]
+        [InlineData('f', 1, 5)]
+        [InlineData('b', 1, 2)]
+        public void Move_ShouldChangeTheRoversCurrentPostion_GivenWest(char command, int newRowPosition, int newColumnPosition)
+        {
+            var grid = new Grid(5,5);
+            var mockDirections = new Mock<IDirections>();
+
+            mockDirections.SetupGet(x => x.Head).Returns(new West());
 
             var rover = new Rover(grid, mockDirections.Object);
             var expected = grid.Find(newRowPosition, newColumnPosition);
             
             rover.Move(command);
             
-            Assert.Equal(expected, rover.CurrentPosition);
+            Assert.Equal(expected, rover.CurrentSquare);
         }
+
+        
     }
 }

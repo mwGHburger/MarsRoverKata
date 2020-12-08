@@ -4,7 +4,7 @@ namespace MarsRover
 {
     public interface IDirections
     {
-        List<DirectionNode> Nodes { get; }
-        DirectionNode Head { get; }
+        List<IDirection> DirectionTypes { get; }
+        IDirection Head { get; }
     }
 }

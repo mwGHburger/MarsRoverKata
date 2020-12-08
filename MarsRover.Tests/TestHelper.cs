@@ -4,15 +4,15 @@ namespace MarsRover.Tests
 {
     public static class TestHelper
     {
-        // public static void SetupDirection()
-        // {
-        //     var directions = new List<Direction>()
-        //     {
-        //         new Direction(DirectionName.North),
-        //         new Direction(DirectionName.East),
-        //         new Direction(DirectionName.South),
-        //         new Direction(DirectionName.West)
-        //     };
-        // }
+        public static List<IDirection> SetupDirectionTypes()
+        {
+            return new List<IDirection>()
+            {
+                new North(),
+                new East(),
+                new South(),
+                new West()
+            };
+        }
     }
 }
