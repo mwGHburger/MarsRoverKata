@@ -39,33 +39,71 @@ namespace MarsRover
             {
                 if(CurrentDirection.Name.Equals(DirectionName.North))
                 {
-                   var newRow = (CurrentPosition.Row + 1 > _grid.Rows) ? 1 : CurrentPosition.Row + 1;
-                   var newColumn = CurrentPosition.Column;
-                   CurrentPosition = _grid.Find(newRow, newColumn);
+                   MoveNorth();
                 }
 
                 if(CurrentDirection.Name.Equals(DirectionName.South))
                 {
-                   var newRow = (CurrentPosition.Row - 1).Equals(0) ? _grid.Rows : CurrentPosition.Row - 1;
-                   
-                   var newColumn = CurrentPosition.Column;
-                   CurrentPosition = _grid.Find(newRow, newColumn);
+                   MoveSouth();
                 }
 
                 if(CurrentDirection.Name.Equals(DirectionName.East))
                 {
-                   var newRow = CurrentPosition.Row;
-                   var newColumn = (CurrentPosition.Column + 1 > _grid.Columns) ? 1 : CurrentPosition.Column + 1;
-                   CurrentPosition = _grid.Find(newRow, newColumn);
+                   MoveEast();
                 }
 
                 if(CurrentDirection.Name.Equals(DirectionName.West))
                 {
-                   var newRow = CurrentPosition.Row;
-                   var newColumn = (CurrentPosition.Column - 1).Equals(0) ? _grid.Columns : CurrentPosition.Column - 1;
-                   CurrentPosition = _grid.Find(newRow, newColumn);
+                   MoveWest();
                 }
             }
+
+            if(command.Equals('b'))
+            {
+                if(CurrentDirection.Name.Equals(DirectionName.North))
+                {
+                   MoveSouth();
+                }
+
+                if(CurrentDirection.Name.Equals(DirectionName.South))
+                {
+                   MoveNorth();
+                }
+
+                if(CurrentDirection.Name.Equals(DirectionName.East))
+                {
+                   MoveWest();
+                }
+
+                if(CurrentDirection.Name.Equals(DirectionName.West))
+                {
+                   MoveEast();
+                }
+            }
+        }
+
+        private void MoveNorth()
+        {
+            var newRow = (CurrentPosition.Row + 1 > _grid.Rows) ? 1 : CurrentPosition.Row + 1;
+            CurrentPosition = _grid.Find(newRow, CurrentPosition.Column);
+        }
+
+        private void MoveSouth()
+        {
+            var newRow = (CurrentPosition.Row - 1).Equals(0) ? _grid.Rows : CurrentPosition.Row - 1;
+            CurrentPosition = _grid.Find(newRow, CurrentPosition.Column);
+        }
+
+        private void MoveEast()
+        {
+            var newColumn = (CurrentPosition.Column + 1 > _grid.Columns) ? 1 : CurrentPosition.Column + 1;
+            CurrentPosition = _grid.Find(CurrentPosition.Row, newColumn);
+        }
+
+        private void MoveWest()
+        {
+            var newColumn = (CurrentPosition.Column - 1).Equals(0) ? _grid.Columns : CurrentPosition.Column - 1;
+            CurrentPosition = _grid.Find(CurrentPosition.Row, newColumn);
         }
     }
 }

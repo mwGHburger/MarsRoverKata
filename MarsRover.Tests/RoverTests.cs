@@ -57,11 +57,15 @@ namespace MarsRover.Tests
         }
 
         [Theory]
-        [InlineData(DirectionName.North, 2, 1)]
-        [InlineData(DirectionName.East, 1, 2)]
-        [InlineData(DirectionName.South, 5, 1)]
-        [InlineData(DirectionName.West, 1, 5)]
-        public void Move_ShouldChangeTheRoversCurrentPostion(DirectionName directionName, int newRowPosition, int newColumnPosition)
+        [InlineData('f', DirectionName.North, 2, 1)]
+        [InlineData('f', DirectionName.East, 1, 2)]
+        [InlineData('f', DirectionName.South, 5, 1)]
+        [InlineData('f', DirectionName.West, 1, 5)]
+        [InlineData('b', DirectionName.North, 5, 1)]
+        [InlineData('b', DirectionName.East, 1, 5)]
+        [InlineData('b', DirectionName.South, 2, 1)]
+        [InlineData('b', DirectionName.West, 1, 2)]
+        public void Move_ShouldChangeTheRoversCurrentPostion(char command, DirectionName directionName, int newRowPosition, int newColumnPosition)
         {
             var grid = new Grid(5,5);
             var mockDirections = new Mock<IDirections>();
@@ -71,7 +75,7 @@ namespace MarsRover.Tests
             var rover = new Rover(grid, mockDirections.Object);
             var expected = grid.Find(newRowPosition, newColumnPosition);
             
-            rover.Move('f');
+            rover.Move(command);
             
             Assert.Equal(expected, rover.CurrentPosition);
         }
