@@ -16,15 +16,16 @@ namespace MarsRover.Tests
             Assert.Equal(expected, actual);
         }
 
-        // [Fact]
-        // public void HeadProperty_ShouldBeNorth()
-        // {
-        //     var directions = new Directions();
-        //     var expected = DirectionName.North;
+        [Fact]
+        public void HeadProperty_ShouldBeNorth()
+        {
+            var directionTypes = TestHelper.SetupDirectionTypes();
+            var directions = new Directions(directionTypes);
+            var expected = DirectionName.North;
 
-        //     var actual = directions.Head.Name;
+            var actual = directions.Head.Name;
 
-        //     Assert.Equal(expected, actual);
-        // }
+            Assert.Equal(expected, actual);
+        }
     }
 }
