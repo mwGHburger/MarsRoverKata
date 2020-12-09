@@ -5,11 +5,12 @@ namespace MarsRover.Tests
 {
     public class InvalidCommandValidatorTests
     {
-        [Fact]
-        public void IsValid_ShouldReturnTrueForValidCommands()
+        [Theory]
+        [InlineData("f,b,l,r")]
+        [InlineData(" f, b,l ,r ")]
+        public void IsValid_ShouldReturnTrueForValidCommands(string input)
         {
             var invalidCommandValidator = new InvalidCommandValidator();
-            var input = "f,b,l,r";
 
             var actual = invalidCommandValidator.IsValid(input);
 

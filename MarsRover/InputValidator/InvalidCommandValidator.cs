@@ -8,7 +8,7 @@ namespace MarsRover
             var commands = input.Split(',');
             foreach(string command in commands)
             {
-                var formattedCommand = command.ToLower();
+                var formattedCommand = command.Trim().ToLower();
                 var condition = formattedCommand.Equals("f") || formattedCommand.Equals("b") || formattedCommand.Equals("r") || formattedCommand.Equals("l");
                 if(!condition)
                 {
