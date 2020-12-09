@@ -1,7 +1,7 @@
 using System;
 namespace MarsRover
 {
-    public class InvalidCommandValidator
+    public class InvalidCommandValidator : IValidator
     {
         public bool IsValid(string input)
         {
