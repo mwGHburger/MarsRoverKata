@@ -6,7 +6,7 @@ namespace MarsRover
     {
         public bool IsValid(string input)
         {
-            if(String.IsNullOrEmpty(input))
+            if(String.IsNullOrEmpty(input.Trim()))
             {
                 throw new ArgumentException("Please enter rover commands!");
             }
