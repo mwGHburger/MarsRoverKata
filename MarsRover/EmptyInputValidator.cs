@@ -2,7 +2,7 @@ using System;
 
 namespace MarsRover
 {
-    public class EmptyStringValidator : IValidator
+    public class EmptyInputValidator : IValidator
     {
         public bool IsValid(string input)
         {

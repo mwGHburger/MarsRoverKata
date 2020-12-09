@@ -23,7 +23,7 @@ namespace MarsRover.Tests
         {
             var validators = new List<IValidator>()
             {
-                new EmptyStringValidator()
+                new EmptyInputValidator()
             };
             var input = "";
             var inputValidator = new InputValidator(validators);
