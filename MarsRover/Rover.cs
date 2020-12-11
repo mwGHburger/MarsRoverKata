@@ -6,7 +6,6 @@ namespace MarsRover
     {
         private Grid _grid;
         private IDirections _directions;
-
         public Square CurrentSquare { get; private set;}
         public IDirection CurrentDirection { get; private set; }
 
@@ -17,35 +16,25 @@ namespace MarsRover
             CurrentSquare = grid.Squares[0];
             CurrentDirection = _directions.Head;
         }
-        
-        public void Turn(char command)
-        {
-            if(command.Equals('r'))
-            {
-                CurrentDirection = CurrentDirection.TurnRight;
-                return;
-            }
 
-            if(command.Equals('l'))
-            {
-                CurrentDirection = CurrentDirection.TurnLeft;
-                return;
-            }
+        public void TurnRight()
+        {
+            CurrentDirection = CurrentDirection.TurnRight;
         }
 
-        public void Move(char command)
+        public void TurnLeft()
         {
-            if(command.Equals('f'))
-            {
-                CurrentSquare = CurrentDirection.MoveForward(CurrentSquare, _grid);
-                return;
-            }
+            CurrentDirection = CurrentDirection.TurnLeft;
+        }
 
-            if(command.Equals('b'))
-            {
-                CurrentSquare = CurrentDirection.MoveBackwards(CurrentSquare, _grid);
-                return;
-            }
+        public void MoveForward()
+        {
+            CurrentSquare = CurrentDirection.MoveForward(CurrentSquare, _grid);
+        }
+
+        public void MoveBackwards()
+        {
+            CurrentSquare = CurrentDirection.MoveBackwards(CurrentSquare, _grid);
         }
     }
 }
