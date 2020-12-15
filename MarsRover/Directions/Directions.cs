@@ -24,7 +24,8 @@ namespace MarsRover
 
         private void SetupClockwiseDirections()
         {
-            for(int i = 0; i < DirectionTypes.Count; i++)
+            var startingIndex = 0;
+            for(int i = startingIndex; i < DirectionTypes.Count; i++)
             {
                 if(i.Equals(DirectionTypes.Count - 1))
                 {
@@ -37,7 +38,8 @@ namespace MarsRover
 
         private void SetupAntiClockwiseDirections()
         {
-            for(int i = DirectionTypes.Count - 1; i >= 0; i--)
+            var endingIndex = DirectionTypes.Count - 1;
+            for(int i = endingIndex; i >= 0; i--)
             {
                 if(i.Equals(0))
                 {
