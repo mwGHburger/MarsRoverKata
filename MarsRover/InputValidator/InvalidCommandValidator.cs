@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System;
 namespace MarsRover
 {
@@ -5,13 +6,11 @@ namespace MarsRover
     {
         public bool IsValid(string input)
         {
-            input = input.Replace(",", "").Replace(" ","");
+            input = input.Replace(",", "").Replace(" ","").ToLower();
             var commands = input.ToCharArray();
             foreach(var command in commands)
             {
-                var formattedCommand = command.ToString().ToLower();
-                var condition = formattedCommand.Equals("f") || formattedCommand.Equals("b") || formattedCommand.Equals("r") || formattedCommand.Equals("l");
-                if(!condition)
+                if(!ApplicationProperties.ValidCommands.Contains(command))
                 {
                     throw new ArgumentException("Invalid command!");
                 }
