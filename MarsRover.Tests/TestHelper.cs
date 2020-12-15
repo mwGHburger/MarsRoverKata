@@ -14,5 +14,14 @@ namespace MarsRover.Tests
                 new West()
             };
         }
+
+        public static List<IValidator> SetupValidators()
+        {
+            return new List<IValidator>()
+            {
+                new EmptyInputValidator(),
+                new InvalidCommandValidator()
+            };
+        }
     }
 }

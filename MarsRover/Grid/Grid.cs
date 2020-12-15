@@ -23,9 +23,9 @@ namespace MarsRover
 
         private void CreateSquares()
         {
-            for(int row = 1; row <= Rows; row++)
+            for(int row = ApplicationProperties.GridMinimumValue; row <= Rows; row++)
             {   
-                for(int column = 1; column <= Columns; column++)
+                for(int column = ApplicationProperties.GridMinimumValue; column <= Columns; column++)
                 {
                     Squares.Add(new Square(row, column));
                 }

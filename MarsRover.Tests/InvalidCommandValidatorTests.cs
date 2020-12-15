@@ -6,6 +6,7 @@ namespace MarsRover.Tests
     public class InvalidCommandValidatorTests
     {
         [Theory]
+        [InlineData("fblr")]
         [InlineData("f,b,l,r")]
         [InlineData(" f, b,l ,r ")]
         public void IsValid_ShouldReturnTrueForValidCommands(string input)

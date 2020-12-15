@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace MarsRover
 {
     public class Rover

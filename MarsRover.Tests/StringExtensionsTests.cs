@@ -17,8 +17,8 @@ namespace MarsRover.Tests
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
-                new object[] { "f,b,l,r", new List<char>() {'f','b','l','r'}},
-                new object[] { "fblr", new List<char>() {'f','b','l','r'}},
+                new object[] { "f, b, l, r", new List<char>() {'f','b','l','r'}},
+                new object[] { "fbblr", new List<char>() {'f','b','b','l','r'}},
             };
     }
 }

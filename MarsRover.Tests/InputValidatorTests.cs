@@ -9,7 +9,7 @@ namespace MarsRover.Tests
         [Fact]
         public void IsValid_ShouldReturnTrueForValidInput()
         {
-            var validators = new List<IValidator>();
+            var validators = TestHelper.SetupValidators();
             var input = "f,b,r,l";
             var inputValidator = new InputValidator(validators);
             
@@ -21,10 +21,7 @@ namespace MarsRover.Tests
         [Fact]
         public void IsValid_ShouldThrowArgumentExceptionForEmptyInput()
         {
-            var validators = new List<IValidator>()
-            {
-                new EmptyInputValidator()
-            };
+            var validators = TestHelper.SetupValidators();
             var input = "";
             var inputValidator = new InputValidator(validators);
             
@@ -35,10 +32,7 @@ namespace MarsRover.Tests
         [Fact]
         public void IsValid_ShouldThrowArgumentExceptionForInvalidCommand()
         {
-            var validators = new List<IValidator>()
-            {
-                new InvalidCommandValidator()
-            };
+            var validators = TestHelper.SetupValidators();
             var input = "zz,wefa!faef";
             var inputValidator = new InputValidator(validators);
             
