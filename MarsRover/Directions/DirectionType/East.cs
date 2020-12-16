@@ -8,14 +8,12 @@ namespace MarsRover
 
         public Square MoveForward(Square currentSquare, Grid grid)
         {
-            var newColumn = (currentSquare.Column + 1 > grid.Columns) ? 1 : currentSquare.Column + 1;
-            return grid.Find(currentSquare.Row, newColumn);
+            return grid.GetNextSquareRight(currentSquare);
         }
 
         public Square MoveBackwards(Square currentSquare, Grid grid)
         {
-            var newColumn = (currentSquare.Column - 1).Equals(0) ? grid.Columns : currentSquare.Column - 1;
-            return grid.Find(currentSquare.Row, newColumn);
+            return grid.GetNextSquareLeft(currentSquare);
         }
     }
 }

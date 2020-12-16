@@ -27,7 +27,9 @@ namespace MarsRover
 
         public void MoveForward()
         {
+            //CurrentSquare.State = Empty
             CurrentSquare = CurrentDirection.MoveForward(CurrentSquare, _grid);
+            //CurrentSquare.State = Rover
         }
 
         public void MoveBackwards()

@@ -21,6 +21,30 @@ namespace MarsRover
             return Squares.Find(x => x.Row.Equals(row) && x.Column.Equals(column));
         }
 
+        public Square GetNextSquareUp(Square currentSquare)
+        {
+            var newRow = (currentSquare.Row + 1 > Rows) ? 1 : currentSquare.Row + 1;
+            return Find(newRow, currentSquare.Column);
+        }
+
+        public Square GetNextSquareDown(Square currentSquare)
+        {
+            var newRow = (currentSquare.Row - 1).Equals(0) ? Rows : currentSquare.Row - 1;
+            return Find(newRow, currentSquare.Column);
+        }
+        
+        public Square GetNextSquareLeft(Square currentSquare)
+        {
+            var newColumn = (currentSquare.Column - 1).Equals(0) ? Columns : currentSquare.Column - 1;
+            return Find(currentSquare.Row, newColumn);
+        }
+
+        public Square GetNextSquareRight(Square currentSquare)
+        {
+            var newColumn = (currentSquare.Column + 1 > Columns) ? 1 : currentSquare.Column + 1;
+            return Find(currentSquare.Row, newColumn);
+        }
+
         private void CreateSquares()
         {
             for(int row = ApplicationProperties.GridMinimumValue; row <= Rows; row++)
