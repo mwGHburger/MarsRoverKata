@@ -29,10 +29,10 @@ namespace MarsRover
             {
                 if(i.Equals(DirectionTypes.Count - 1))
                 {
-                    DirectionTypes[i].TurnRight = DirectionTypes[0];
+                    DirectionTypes[i].Right = DirectionTypes[0];
                     return;
                 }
-                DirectionTypes[i].TurnRight = DirectionTypes[i + 1];
+                DirectionTypes[i].Right = DirectionTypes[i + 1];
             }
         }
 
@@ -43,10 +43,10 @@ namespace MarsRover
             {
                 if(i.Equals(0))
                 {
-                    DirectionTypes[i].TurnLeft = DirectionTypes[DirectionTypes.Count - 1];
+                    DirectionTypes[i].Left = DirectionTypes[DirectionTypes.Count - 1];
                     return;
                 }
-                DirectionTypes[i].TurnLeft = DirectionTypes[i - 1];
+                DirectionTypes[i].Left = DirectionTypes[i - 1];
             }
         }
     }

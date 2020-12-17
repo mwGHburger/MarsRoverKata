@@ -13,14 +13,17 @@ namespace MarsRover.Tests
             var mockOutput = new Mock<IOutput>();
             var rows = 4;
             var columns = 4;
-            var grid = new Grid(rows,columns);
+            var emptyIcon = "o";
+            var mockGrid = new Mock<IGrid>();
+            var mockIcons = new Mock<IIcons>();
             var commandLineInterface = new CommandLineInterface(mockInput.Object, mockOutput.Object);
-            var expected = "oooo\n" +
-                           "oooo\n" +
-                           "oooo\n" +
-                           "oooo\n"; 
+            var expected = TestHelper.SetupGridString(rows, columns, emptyIcon);
 
-            commandLineInterface.DisplayGrid(grid);
+            mockGrid.Setup(x => x.Columns).Returns(4);
+            mockGrid.Setup(x => x.Squares).Returns(TestHelper.SetupSquares(rows, columns));
+            mockIcons.Setup(x => x.GetIconFromSquareState(SquareState.Empty)).Returns(emptyIcon);
+            
+            commandLineInterface.DisplayGrid(mockGrid.Object, mockIcons.Object);
             
             mockOutput.Verify(x => x.WriteLine(expected), Times.Exactly(1));
         }

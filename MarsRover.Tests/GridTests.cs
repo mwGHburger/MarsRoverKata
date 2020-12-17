@@ -26,7 +26,6 @@ namespace MarsRover.Tests
             Assert.Equal(3, actual.Column);
         }
 
-        // If this work, refactor north, south, east , west tests
         [Fact]
         public void GetNextSquareUp_ShouldRetursSquareAboveCurrentSquare()
         {

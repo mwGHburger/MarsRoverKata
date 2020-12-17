@@ -7,7 +7,7 @@ namespace MarsRover
         public int Rows { get; }
         public int Columns { get; }
 
-        public List<Square> Squares { get; } = new List<Square>();
+        public List<ISquare> Squares { get; } = new List<ISquare>();
 
         public Grid(int rows, int columns)
         {
@@ -16,30 +16,30 @@ namespace MarsRover
             CreateSquares();
         }
 
-        public Square Find(int row, int column)
+        public ISquare Find(int row, int column)
         {
             return Squares.Find(x => x.Row.Equals(row) && x.Column.Equals(column));
         }
 
-        public Square GetNextSquareUp(Square currentSquare)
+        public ISquare GetNextSquareUp(ISquare currentSquare)
         {
             var newRow = (currentSquare.Row + 1 > Rows) ? 1 : currentSquare.Row + 1;
             return Find(newRow, currentSquare.Column);
         }
 
-        public Square GetNextSquareDown(Square currentSquare)
+        public ISquare GetNextSquareDown(ISquare currentSquare)
         {
             var newRow = (currentSquare.Row - 1).Equals(0) ? Rows : currentSquare.Row - 1;
             return Find(newRow, currentSquare.Column);
         }
         
-        public Square GetNextSquareLeft(Square currentSquare)
+        public ISquare GetNextSquareLeft(ISquare currentSquare)
         {
             var newColumn = (currentSquare.Column - 1).Equals(0) ? Columns : currentSquare.Column - 1;
             return Find(currentSquare.Row, newColumn);
         }
 
-        public Square GetNextSquareRight(Square currentSquare)
+        public ISquare GetNextSquareRight(ISquare currentSquare)
         {
             var newColumn = (currentSquare.Column + 1 > Columns) ? 1 : currentSquare.Column + 1;
             return Find(currentSquare.Row, newColumn);

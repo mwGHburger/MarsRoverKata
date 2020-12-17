@@ -24,9 +24,13 @@ namespace MarsRover
             switch(command)
             {
                 case 'f':
+                    // Detect obstacle
+                    // _rover.DetectObstacleInfront;
                     _rover.MoveForward();
                     return;
                 case 'b':
+                    // Detect obstacle
+                    // _rover.DetectObstacleBehind();
                     _rover.MoveBackwards();
                     return;
                 case 'l':

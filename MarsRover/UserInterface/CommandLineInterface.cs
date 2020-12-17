@@ -11,18 +11,20 @@ namespace MarsRover
             _output = output;
         }
 
-        public void DisplayGrid(Grid grid)
+        public void DisplayGrid(IGrid grid, IIcons icons)
         {
             // TODO: Seems more functional
-            _output.WriteLine(CreateGridString(grid));
+            var gridString = CreateGridString(grid, icons);
+            _output.WriteLine(gridString);
         }
 
-        private string CreateGridString(Grid grid)
+        private string CreateGridString(IGrid grid, IIcons icons)
         {
             var gridString = "";
             foreach(Square square in grid.Squares)
             {
-                gridString += (square.Column < grid.Columns) ? "o" : "o\n";
+                var icon = icons.GetIconFromSquareState(square.State);
+                gridString += (square.Column < grid.Columns) ? $"{icon}" : $"{icon}\n";
             }
             return gridString;
         }

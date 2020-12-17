@@ -4,37 +4,56 @@ namespace MarsRover
     {
         private Grid _grid;
         private IDirections _directions;
-        public Square CurrentSquare { get; private set;}
+        public ISquare CurrentSquare { get; set;}
         public IDirection CurrentDirection { get; private set; }
 
         public Rover(Grid grid, IDirections directions)
         {
+            // TODO: remove grid, rover should not know grid
             _grid = grid;
             _directions = directions;
-            CurrentSquare = grid.Squares[0];
             CurrentDirection = _directions.Head;
         }
 
         public void TurnRight()
         {
-            CurrentDirection = CurrentDirection.TurnRight;
+            CurrentDirection = CurrentDirection.Right;
         }
 
         public void TurnLeft()
         {
-            CurrentDirection = CurrentDirection.TurnLeft;
+            CurrentDirection = CurrentDirection.Left;
         }
 
         public void MoveForward()
         {
-            //CurrentSquare.State = Empty
-            CurrentSquare = CurrentDirection.MoveForward(CurrentSquare, _grid);
-            //CurrentSquare.State = Rover
+            CurrentSquare.State = SquareState.Empty;
+            CurrentSquare = CurrentDirection.GetSquareInfront(CurrentSquare, _grid);
+            CurrentSquare.State = CurrentDirection.RoverState;
         }
 
         public void MoveBackwards()
         {
-            CurrentSquare = CurrentDirection.MoveBackwards(CurrentSquare, _grid);
+            CurrentSquare = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
         }
+        /*
+        public void DetectObstacleInfront()
+        {
+            CurrentSquare = CurrentDirection.GetSquareInfront(CurrentSquare, _grid);
+            if (CurrentSquare.State.Equals(SquareState.Obstacle))
+            {
+                throw new Exception("Detected obstacle");
+            }
+        }
+
+        public void DetectObstacleBehind()
+        {
+            CurrentSquare = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
+            if (CurrentSquare.State.Equals(SquareState.Obstacle))
+            {
+                throw new Exception("Detected obstacle");
+            }
+        }
+        */
     }
 }
