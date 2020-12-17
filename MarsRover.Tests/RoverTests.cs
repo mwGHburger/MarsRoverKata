@@ -96,6 +96,7 @@ namespace MarsRover.Tests
         {
             var grid = new Grid(5,5);
             var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverSouth;
             var mockDirections = new Mock<IDirections>();
 
             mockDirections.SetupGet(x => x.Head).Returns(new South());
@@ -107,7 +108,9 @@ namespace MarsRover.Tests
             
             rover.MoveForward();
             
+            Assert.Equal(SquareState.Empty, startingSquare.State);
             Assert.Equal(expected, rover.CurrentSquare);
+            Assert.Equal(SquareState.RoverSouth, rover.CurrentSquare.State);
         }
 
         [Theory]
@@ -116,6 +119,7 @@ namespace MarsRover.Tests
         {
             var grid = new Grid(5,5);
             var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverSouth;
             var mockDirections = new Mock<IDirections>();
 
             mockDirections.SetupGet(x => x.Head).Returns(new West());
@@ -127,7 +131,9 @@ namespace MarsRover.Tests
             
             rover.MoveForward();
             
+            Assert.Equal(SquareState.Empty, startingSquare.State);
             Assert.Equal(expected, rover.CurrentSquare);
+            Assert.Equal(SquareState.RoverWest, rover.CurrentSquare.State);
         }
 
         [Theory]
@@ -136,6 +142,7 @@ namespace MarsRover.Tests
         {
             var grid = new Grid(5,5);
             var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverNorth;
             var mockDirections = new Mock<IDirections>();
 
             mockDirections.SetupGet(x => x.Head).Returns(new North());
@@ -146,7 +153,9 @@ namespace MarsRover.Tests
 
             rover.MoveBackwards();
             
+            Assert.Equal(SquareState.Empty, startingSquare.State);
             Assert.Equal(expected, rover.CurrentSquare);
+            Assert.Equal(SquareState.RoverNorth, rover.CurrentSquare.State);
         }
 
         [Theory]
@@ -155,6 +164,7 @@ namespace MarsRover.Tests
         {
             var grid = new Grid(5,5);
             var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverEast;
             var mockDirections = new Mock<IDirections>();
 
             mockDirections.SetupGet(x => x.Head).Returns(new East());
@@ -165,7 +175,9 @@ namespace MarsRover.Tests
 
             rover.MoveBackwards();
             
+            Assert.Equal(SquareState.Empty, startingSquare.State);
             Assert.Equal(expected, rover.CurrentSquare);
+            Assert.Equal(SquareState.RoverEast, rover.CurrentSquare.State);
         }
 
         [Theory]
@@ -174,6 +186,7 @@ namespace MarsRover.Tests
         {
             var grid = new Grid(5,5);
             var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverSouth;
             var mockDirections = new Mock<IDirections>();
 
             mockDirections.SetupGet(x => x.Head).Returns(new South());
@@ -184,7 +197,9 @@ namespace MarsRover.Tests
 
             rover.MoveBackwards();
             
+            Assert.Equal(SquareState.Empty, startingSquare.State);
             Assert.Equal(expected, rover.CurrentSquare);
+            Assert.Equal(SquareState.RoverSouth, rover.CurrentSquare.State);
         }
 
         [Theory]
@@ -193,6 +208,7 @@ namespace MarsRover.Tests
         {
             var grid = new Grid(5,5);
             var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverWest;
             var mockDirections = new Mock<IDirections>();
 
             mockDirections.SetupGet(x => x.Head).Returns(new West());
@@ -203,7 +219,9 @@ namespace MarsRover.Tests
 
             rover.MoveBackwards();
             
+            Assert.Equal(SquareState.Empty, startingSquare.State);
             Assert.Equal(expected, rover.CurrentSquare);
+            Assert.Equal(SquareState.RoverWest, rover.CurrentSquare.State);
         }
         
     }

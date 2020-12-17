@@ -5,6 +5,7 @@ namespace MarsRover
         public DirectionName Name { get; } = DirectionName.West;
         public IDirection Right { get; set; }
         public IDirection Left { get; set; }
+        public SquareState RoverState { get; } = SquareState.RoverWest;
 
         public ISquare GetSquareInfront(ISquare currentSquare, Grid grid)
         {

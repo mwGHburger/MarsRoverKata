@@ -34,7 +34,9 @@ namespace MarsRover
 
         public void MoveBackwards()
         {
+            CurrentSquare.State = SquareState.Empty;
             CurrentSquare = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
+            CurrentSquare.State = CurrentDirection.RoverState;
         }
         /*
         public void DetectObstacleInfront()
