@@ -1,6 +1,6 @@
 namespace MarsRover
 {
-    public class Loader
+    public class Loader : ILoader
     {
         private IGrid _grid;
         private IRover _rover;

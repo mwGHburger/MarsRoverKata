@@ -1,13 +1,13 @@
 namespace MarsRover
 {
-    public class Rover
+    public class Rover : IRover
     {
-        private Grid _grid;
+        private IGrid _grid;
         private IDirections _directions;
         public ISquare CurrentSquare { get; set;}
-        public IDirection CurrentDirection { get; private set; }
+        public IDirection CurrentDirection { get; set; }
 
-        public Rover(Grid grid, IDirections directions)
+        public Rover(IGrid grid, IDirections directions)
         {
             // TODO: remove grid, rover should not know grid
             _grid = grid;
@@ -18,11 +18,13 @@ namespace MarsRover
         public void TurnRight()
         {
             CurrentDirection = CurrentDirection.Right;
+            CurrentSquare.State = CurrentDirection.RoverState;
         }
 
         public void TurnLeft()
         {
             CurrentDirection = CurrentDirection.Left;
+            CurrentSquare.State = CurrentDirection.RoverState;
         }
 
         public void MoveForward()

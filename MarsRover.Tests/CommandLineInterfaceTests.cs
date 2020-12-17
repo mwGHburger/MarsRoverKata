@@ -27,5 +27,17 @@ namespace MarsRover.Tests
             
             mockOutput.Verify(x => x.WriteLine(expected), Times.Exactly(1));
         }
+
+        [Fact]
+        public void GetUserInput_ShouldAcceptUserInputViaConsole()
+        {
+            var mockInput = new Mock<IInput>();
+            var mockOutput = new Mock<IOutput>();
+            var commandLineInterface = new CommandLineInterface(mockInput.Object, mockOutput.Object);
+
+            commandLineInterface.GetUserInput();
+
+            mockInput.Verify(x => x.ReadLine(), Times.Exactly(1));
+        }
     }
 }

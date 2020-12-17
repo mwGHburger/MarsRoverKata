@@ -24,27 +24,34 @@ namespace MarsRover.Tests
         public void TurnRight_ShouldChangeTheRoversCurrentDirectionToTheNextClockwiseDirection()
         {
             var grid = new Grid(5,5);
+            var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverNorth;
             var directionTypes = TestHelper.SetupDirectionTypes();
             var directions = new Directions(directionTypes);
-            
             var rover = new Rover(grid, directions);
+            rover.CurrentSquare = startingSquare;
 
             rover.TurnRight();
 
-            Assert.Equal(DirectionName.East, rover.CurrentDirection.Name);            
+            Assert.Equal(DirectionName.East, rover.CurrentDirection.Name);   
+            Assert.Equal(SquareState.RoverEast, rover.CurrentSquare.State);         
         }
 
         [Fact]
         public void TurnLeft_ShouldChangeTheRoversCurrentDirectionToTheNextAntiClockwiseDirection()
         {
             var grid = new Grid(5,5);
+            var startingSquare = grid.Find(1,1);
+            startingSquare.State = SquareState.RoverNorth;
             var directionTypes = TestHelper.SetupDirectionTypes();
             var directions = new Directions(directionTypes);
-            
             var rover = new Rover(grid, directions);
+            rover.CurrentSquare = startingSquare;
+
             rover.TurnLeft();
 
-            Assert.Equal(DirectionName.West, rover.CurrentDirection.Name);            
+            Assert.Equal(DirectionName.West, rover.CurrentDirection.Name);
+            Assert.Equal(SquareState.RoverWest, rover.CurrentSquare.State);            
         }
 
         [Theory]

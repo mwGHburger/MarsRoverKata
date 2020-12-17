@@ -1,6 +1,6 @@
 namespace MarsRover
 {
-    public class CommandLineInterface
+    public class CommandLineInterface : IUserInterface
     {
         private IInput _input;
         private IOutput _output;
@@ -9,6 +9,11 @@ namespace MarsRover
         {
             _input = input;
             _output = output;
+        }
+
+        public string GetUserInput()
+        {
+            return _input.ReadLine();
         }
 
         public void DisplayGrid(IGrid grid, IIcons icons)
@@ -21,10 +26,20 @@ namespace MarsRover
         private string CreateGridString(IGrid grid, IIcons icons)
         {
             var gridString = "";
+            var gridRow = "";
             foreach(Square square in grid.Squares)
             {
                 var icon = icons.GetIconFromSquareState(square.State);
-                gridString += (square.Column < grid.Columns) ? $"{icon}" : $"{icon}\n";
+                if (square.Column < grid.Columns)
+                {
+                    gridRow += icon;
+                }
+                else
+                {
+                    gridRow += icon;
+                    gridString = "\n" + gridRow + gridString;
+                    gridRow = "";
+                }
             }
             return gridString;
         }

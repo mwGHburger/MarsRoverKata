@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace MarsRover
 {
-    public class RoverController
+    public class RoverController : IRoverController
     {
         private IRover _rover;
 

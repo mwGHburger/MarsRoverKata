@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 namespace MarsRover
 {
-    public class Icons
+    public class Icons : IIcons
     {   
         public string GetIconFromSquareState(SquareState squareState)
         {
             switch(squareState) 
             {
                 case SquareState.Empty: 
-                    return "o"; 
+                    return "🟥"; 
                 case SquareState.RoverNorth: 
                     return "🔼"; 
                 case SquareState.RoverEast: 

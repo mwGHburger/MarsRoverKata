@@ -24,9 +24,9 @@ namespace MarsRover.Tests
             };
         }
 
-        public static List<Square> SetupSquares(int row, int column)
+        public static List<ISquare> SetupSquares(int row, int column)
         {
-            var squares = new List<Square>();
+            var squares = new List<ISquare>();
 
             for(var i = 1; i <= row; i++)
             {
@@ -41,14 +41,15 @@ namespace MarsRover.Tests
         public static string SetupGridString(int row, int column, string icon)
         {
             var gridString= "";
-
+            
             for(var i = 1; i <= row; i++)
             {
+                var gridRow = "";
                 for(var j = 1; j <= column; j++)
                 {
-                    gridString += icon;
+                    gridRow += icon;
                 }
-                gridString += "\n";
+                gridString = "\n" + gridRow + gridString;
             }
             return gridString;
         }

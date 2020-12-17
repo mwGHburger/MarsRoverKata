@@ -5,7 +5,7 @@ namespace MarsRover.Tests
     public class IconsTests
     {
         [Theory]
-        [InlineData("o", SquareState.Empty)]
+        [InlineData("🟥", SquareState.Empty)]
         [InlineData("🔼", SquareState.RoverNorth)]
         [InlineData("▶️", SquareState.RoverEast)]
         [InlineData("🔽", SquareState.RoverSouth)]

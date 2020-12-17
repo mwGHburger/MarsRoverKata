@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 namespace MarsRover
 {
-    public class Grid
+    public class Grid : IGrid
     {
         public int Rows { get; }
         public int Columns { get; }

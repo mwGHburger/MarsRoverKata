@@ -7,12 +7,12 @@ namespace MarsRover
         public IDirection Right { get; set; }
         public IDirection Left { get; set; }
 
-        public ISquare GetSquareInfront(ISquare currentSquare, Grid grid)
+        public ISquare GetSquareInfront(ISquare currentSquare, IGrid grid)
         {
             return grid.GetNextSquareUp(currentSquare);
         }
 
-        public ISquare GetSquareBehind(ISquare currentSquare, Grid grid)
+        public ISquare GetSquareBehind(ISquare currentSquare, IGrid grid)
         {
             return grid.GetNextSquareDown(currentSquare);
         }
