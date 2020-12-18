@@ -5,7 +5,19 @@ namespace MarsRover.Tests
 {
     public class CommandLineInterfaceTests
     {
-        
+        [Fact]
+        public void Write_ShouldStringInputToDisplay()
+        {
+            var mockInput = new Mock<IInput>();
+            var mockOutput = new Mock<IOutput>();
+            var commandLineInterface = new CommandLineInterface(mockInput.Object, mockOutput.Object);
+            var input = "test";
+
+            commandLineInterface.Print(input);
+
+            mockOutput.Verify(x => x.WriteLine(input), Times.Exactly(1));
+        }
+
         [Fact]
         public void DisplayGrid_ShouldPrintTheCurrentGridStateOnTheConsole()
         {
@@ -39,5 +51,6 @@ namespace MarsRover.Tests
 
             mockInput.Verify(x => x.ReadLine(), Times.Exactly(1));
         }
+         
     }
 }

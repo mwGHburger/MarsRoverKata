@@ -11,6 +11,11 @@ namespace MarsRover
             _output = output;
         }
 
+        public void Print(string input)
+        {
+            _output.WriteLine(input);
+        }
+
         public string GetUserInput()
         {
             return _input.ReadLine();

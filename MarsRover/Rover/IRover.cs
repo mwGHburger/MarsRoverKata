@@ -8,5 +8,7 @@ namespace MarsRover
         void TurnLeft();
         void MoveForward();
         void MoveBackwards();
+        void DetectObstacleInfront();
+        void DetectObstacleBehind();
     }
 }

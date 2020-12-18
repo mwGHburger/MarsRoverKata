@@ -17,7 +17,9 @@ namespace MarsRover.Tests
             roverController.HandleInputCommands(roverCommands);
 
             mockRover.Verify(x => x.MoveForward(), Times.Exactly(moveForwardTimesCalled));
+            mockRover.Verify(x => x.DetectObstacleInfront(), Times.Exactly(moveForwardTimesCalled));
             mockRover.Verify(x => x.MoveBackwards(), Times.Exactly(moveBackwardsTimesCalled));
+            mockRover.Verify(x => x.DetectObstacleBehind(), Times.Exactly(moveBackwardsTimesCalled));
             mockRover.Verify(x => x.TurnLeft(), Times.Exactly(turnLeftTimesCalled));
             mockRover.Verify(x => x.TurnRight(), Times.Exactly(turnRightTimesCalled));
         }

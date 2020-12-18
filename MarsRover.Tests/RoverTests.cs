@@ -231,5 +231,42 @@ namespace MarsRover.Tests
             Assert.Equal(SquareState.RoverWest, rover.CurrentSquare.State);
         }
         
+        [Fact]
+        public void DetectObstacleInfront_ShouldThrowExceptionWhenObstacleExistInfront()
+        {
+            var grid = new Grid(5,5);
+            var startingSquare = grid.Find(1,1);
+            var obstacle = grid.Find(2,1);
+            startingSquare.State = SquareState.RoverNorth;
+            obstacle.State = SquareState.Obstacle;
+            var mockDirections = new Mock<IDirections>();
+
+            mockDirections.SetupGet(x => x.Head).Returns(new North());
+
+            var rover = new Rover(grid, mockDirections.Object);
+            rover.CurrentSquare = startingSquare;
+            
+            var ex = Assert.Throws<ArgumentException>(() => rover.DetectObstacleInfront());
+            Assert.Equal("Obstacle infront of Rover!", ex.Message);
+        }
+
+        [Fact]
+        public void DetectObstacleBehind_ShouldThrowExceptionWhenObstacleExistInfront()
+        {
+            var grid = new Grid(5,5);
+            var startingSquare = grid.Find(1,1);
+            var obstacle = grid.Find(5,1);
+            startingSquare.State = SquareState.RoverNorth;
+            obstacle.State = SquareState.Obstacle;
+            var mockDirections = new Mock<IDirections>();
+
+            mockDirections.SetupGet(x => x.Head).Returns(new North());
+
+            var rover = new Rover(grid, mockDirections.Object);
+            rover.CurrentSquare = startingSquare;
+            
+            var ex = Assert.Throws<ArgumentException>(() => rover.DetectObstacleBehind());
+            Assert.Equal("Obstacle behind of Rover!", ex.Message);
+        }
     }
 }

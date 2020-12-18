@@ -11,14 +11,16 @@ namespace MarsRover
             {
                 case SquareState.Empty: 
                     return "🟥"; 
+                case SquareState.Obstacle: 
+                    return "💀"; 
                 case SquareState.RoverNorth: 
                     return "🔼"; 
                 case SquareState.RoverEast: 
-                    return "▶️";
+                    return "⏩";
                 case SquareState.RoverSouth: 
                     return "🔽";
                 case SquareState.RoverWest: 
-                    return "◀️";
+                    return "⏪";
                 default:
                     throw new ArgumentException("Square state does not exist");
             }

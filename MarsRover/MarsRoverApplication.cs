@@ -21,14 +21,31 @@ namespace MarsRover
 
         public void Run()
         {
+            _userInterface.Print("Starting Mars Rover...");
+            _userInterface.Print("Enter number of obstacle: ");
+            var obstaclesQuantity = _userInterface.GetUserInput();
+            _userInterface.Print("Loading Rover...");   
             _loader.LoadRoverOntoGrid();
+            _userInterface.Print("Loading Obstacles...");   
+            _loader.LoadObstaclesOntoGrid(Convert.ToInt32(obstaclesQuantity));
+            _userInterface.DisplayGrid(_grid, _icons);
             while(true)
             {
-                _userInterface.DisplayGrid(_grid, _icons);
-                var input = _userInterface.GetUserInput();
-                var commands = input.ConvertToCharList();
-                _roverController.HandleInputCommands(commands);
-                Console.Clear();
+                try
+                {
+                    var input = _userInterface.GetUserInput();
+                    var commands = input.ConvertToCharList();
+                    _roverController.HandleInputCommands(commands);
+                    Console.Clear();
+                    _userInterface.DisplayGrid(_grid, _icons);
+                }
+                catch(ArgumentException ex)
+                {
+                    Console.Clear();
+                    _userInterface.Print(ex.Message);
+                    _userInterface.DisplayGrid(_grid, _icons);
+                }
+                
             }
         }
         

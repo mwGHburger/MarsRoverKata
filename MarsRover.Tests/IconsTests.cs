@@ -6,10 +6,11 @@ namespace MarsRover.Tests
     {
         [Theory]
         [InlineData("🟥", SquareState.Empty)]
+        [InlineData("💀", SquareState.Obstacle)]
         [InlineData("🔼", SquareState.RoverNorth)]
-        [InlineData("▶️", SquareState.RoverEast)]
+        [InlineData("⏩", SquareState.RoverEast)]
         [InlineData("🔽", SquareState.RoverSouth)]
-        [InlineData("◀️", SquareState.RoverWest)]
+        [InlineData("⏪", SquareState.RoverWest)]
         public void GetIcon_ShouldReturnStringIconDependingOnSquareState(string expected, SquareState squareState)
         {
             var icons = new Icons();

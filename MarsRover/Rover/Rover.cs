@@ -1,3 +1,5 @@
+using System;
+
 namespace MarsRover
 {
     public class Rover : IRover
@@ -40,24 +42,21 @@ namespace MarsRover
             CurrentSquare = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
             CurrentSquare.State = CurrentDirection.RoverState;
         }
-        /*
         public void DetectObstacleInfront()
         {
-            CurrentSquare = CurrentDirection.GetSquareInfront(CurrentSquare, _grid);
-            if (CurrentSquare.State.Equals(SquareState.Obstacle))
+            var squareInfront = CurrentDirection.GetSquareInfront(CurrentSquare, _grid);
+            if (squareInfront.State.Equals(SquareState.Obstacle))
             {
-                throw new Exception("Detected obstacle");
+                throw new ArgumentException("Obstacle infront of Rover!");
             }
         }
-
         public void DetectObstacleBehind()
         {
-            CurrentSquare = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
-            if (CurrentSquare.State.Equals(SquareState.Obstacle))
+            var squareBehind = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
+            if (squareBehind.State.Equals(SquareState.Obstacle))
             {
-                throw new Exception("Detected obstacle");
+                throw new ArgumentException("Obstacle behind of Rover!");
             }
         }
-        */
     }
 }
