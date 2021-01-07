@@ -266,7 +266,7 @@ namespace MarsRover.Tests
             rover.CurrentSquare = startingSquare;
             
             var ex = Assert.Throws<ArgumentException>(() => rover.DetectObstacleBehind());
-            Assert.Equal("Obstacle behind of Rover!", ex.Message);
+            Assert.Equal("Obstacle behind Rover!", ex.Message);
         }
     }
 }

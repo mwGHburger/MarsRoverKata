@@ -6,7 +6,7 @@ namespace MarsRover.Tests
     {
         [Theory]
         [InlineData("🟥", SquareState.Empty)]
-        [InlineData("💀", SquareState.Obstacle)]
+        [InlineData("🌋", SquareState.Obstacle)]
         [InlineData("🔼", SquareState.RoverNorth)]
         [InlineData("⏩", SquareState.RoverEast)]
         [InlineData("🔽", SquareState.RoverSouth)]

@@ -55,7 +55,7 @@ namespace MarsRover
             var squareBehind = CurrentDirection.GetSquareBehind(CurrentSquare, _grid);
             if (squareBehind.State.Equals(SquareState.Obstacle))
             {
-                throw new ArgumentException("Obstacle behind of Rover!");
+                throw new ArgumentException("Obstacle behind Rover!");
             }
         }
     }

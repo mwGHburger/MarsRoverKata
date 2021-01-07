@@ -12,7 +12,7 @@ namespace MarsRover
                 case SquareState.Empty: 
                     return "🟥"; 
                 case SquareState.Obstacle: 
-                    return "💀"; 
+                    return "🌋"; 
                 case SquareState.RoverNorth: 
                     return "🔼"; 
                 case SquareState.RoverEast: 

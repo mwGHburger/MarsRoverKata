@@ -6,7 +6,7 @@ namespace MarsRover
     {
         public static MarsRoverApplication CreateApplication()
         {
-            return new MarsRoverApplication(CreateCommandLineInterface(), CreateLoader(), grid, CreateIcons(), CreateRoverController());
+            return new MarsRoverApplication(CreateCommandLineInterface(), CreateLoader(), grid, CreateIcons(), CreateRoverController(), CreateRoverCommandInputValidator(), CreateObstacleInputValidator());
         }
         public static IUserInterface CreateCommandLineInterface()
         {
@@ -55,6 +55,34 @@ namespace MarsRover
         public static IRoverController CreateRoverController()
         {
             return new RoverController(rover);
+        }
+
+        public static IValidator CreateRoverCommandInputValidator()
+        {
+            return new InputValidator(CreateRoverCommandInputValidatorsList());
+        }
+
+        public static List<IValidator> CreateRoverCommandInputValidatorsList()
+        {
+            return new List<IValidator>()
+            {
+                new EmptyInputValidator(),
+                new InvalidCommandValidator()
+            };
+        }
+
+        public static IValidator CreateObstacleInputValidator()
+        {
+            return new InputValidator(CreateObstacleInputValidatorsList());
+        }
+
+        public static List<IValidator> CreateObstacleInputValidatorsList()
+        {
+            return new List<IValidator>()
+            {
+                new EmptyInputValidator(),
+                new InvalidQuantityValidator()
+            };
         }
     }
 }

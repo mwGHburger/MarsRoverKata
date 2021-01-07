@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace MarsRover
 {
-    public class InputValidator
+    public class InputValidator : IValidator
     {
         private List<IValidator> _validators;
 
