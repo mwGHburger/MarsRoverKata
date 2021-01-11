@@ -12,7 +12,7 @@ namespace MarsRover
             Column = column;
         }
 
-        public void SetStatedBasedOnRoverDirection(IRover rover)
+        public void SetStateBasedOnRoverDirection(IRover rover)
         {
             switch(rover.CurrentDirection.Name)
             {

@@ -25,7 +25,7 @@ namespace MarsRover.Tests
 
             mockRover.Setup(x => x.CurrentDirection).Returns(new North());
 
-            square.SetStatedBasedOnRoverDirection(mockRover.Object);
+            square.SetStateBasedOnRoverDirection(mockRover.Object);
 
             var actual = square.State;
 
